@@ -1,11 +1,18 @@
-import logo from './logo.svg';
 import './App.css';
+import './components/title/title.component';
+import Title from './components/title/title.component';
+import Detalis from './components/detalis/detalis.component';
+import Temp from './components/temp/temp.component';
+import {FaPowerOff} from 'react-icons/fa';
 
 function App() {
   return (
     <div className="App">
+        <FaPowerOff/>
+        <Title />
+        <Detalis/>
+        <Temp/>
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
