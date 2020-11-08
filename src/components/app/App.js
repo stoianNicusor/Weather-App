@@ -1,8 +1,8 @@
 import './App.css';
-import './components/title/title.component';
-import Title from './components/title/title.component';
-import Detalis from './components/detalis/detalis.component';
-import Temp from './components/temp/temp.component';
+import '../title/title.component';
+import Title from '../title/title.component';
+import Detalis from '../detalis/detalis.component';
+import Temp from '../temp/temp.component';
 import {FaPowerOff} from 'react-icons/fa';
 
 function App() {
