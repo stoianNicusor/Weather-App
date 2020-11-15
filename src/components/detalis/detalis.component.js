@@ -1,10 +1,10 @@
-//import './detalis.style.scss';
+import './detalis.style.scss';
 import {FaPowerOff} from 'react-icons/fa';
 
-function Detalis(){
+function Detalis(props){
     return(
-        <div className=''>
-           < FaPowerOff/>
+        <div className='detalis'>
+           {props.detalis}
         </div>
     )
 }

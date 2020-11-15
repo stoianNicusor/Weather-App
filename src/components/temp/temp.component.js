@@ -1,9 +1,10 @@
-//import './temp.style.scss';
+import './temp.style.scss';
 
-function Temp(){
+function Temp(props){
     return(
-        <div className=''>
-            
+        <div className='temp'>
+            { props.temp }
+            { props.isCeleus ? 'C' : '' }
         </div>
     )
 }

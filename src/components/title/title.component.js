@@ -1,8 +1,10 @@
-//import './title.style.scss';
+import './title.style.scss';
 
-function Title(){
+function Title(props){
     return(
-        <div className=''>Titlu</div>
+        <div className='title'>
+            { props.text }
+        </div>
     )
 }
 
