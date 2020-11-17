@@ -3,10 +3,63 @@
   background: blue;
   margin: 0 auto;
   color: white;
-  .temp{
-    display: flex;
-  }
-  .header{
-    margin-bottom: 7vw;
+  .container{
+    .header{
+      margin-bottom: 15vh ;
+      
+      .city{
+        font-size: 2vw;
+        text-align: center;
+        padding-top: 1vh;
+      }
+      .date{
+        font-size: 1vw;
+        text-align: center;
+      }
+    }
+    margin: 0 1.5vw;
+    
+    .middle{
+      display: flex;
+      align-items: flex-end ;
+      margin-bottom: 15vh;
+
+      .left{
+        font-size: 6vw;
+        font-weight: 100;
+      }
+
+      .right{
+        font-size: 1.1vw; 
+      }
+    }
+
+    .howIs{
+      display: flex;
+      .detalis{
+        font-size: 2vw;
+      }
+      .logo{
+        font-size: 2vw;
+        margin-right: 1vw;
+      }
+    }
+    
+    .how{
+      margin-bottom: 1vh;
+      font-size: 1.7vw;
+    }
+
+    .det{
+      display: flex;
+      padding-bottom: 2vh;
+      
+      .logo{
+        font-size: 2vw;
+      }
+      .detalis{
+        font-size: 4vh;
+      }
+    }
   }
 }
