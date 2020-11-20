@@ -4,7 +4,7 @@ function Temp(props){
     return(
         <div className='temp'>
             { props.temp }
-            { props.isCeleus ? 'C' : '' }
+            { props.isCeleus ? '°C' : '°' }
         </div>
     )
 }
