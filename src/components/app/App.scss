@@ -27,6 +27,7 @@ body{
       margin-bottom: 2vh;
       .detalis{
         font-size: 1.8em;
+        text-transform: capitalize;
       }
       .logo{
         font-size: 2em;
@@ -79,11 +80,36 @@ body{
       }
     }
   }
+  .btn{
+    display: flex;
+    justify-content: space-between;
+
+    button{
+      border: none;
+      cursor: pointer;
+      padding: 0.8vw 1.5vw;
+      background-color: rgba(1, 2, 3, 0);
+      color: white;
+      font-size: 1.5em;
+  
+      &:focus{
+        outline: 0;
+      }
+      &:hover{
+        background-color: rgba($color: #000000, $alpha: 0.8);
+      }
+    }
+    
+  }
+  
 }
 .load{
   width: max-content;
-  margin: 35vh auto;
+  margin: 0 auto;
   display: flex;
+  align-items: center;
+  height: 100vh;
+
   .l{
       font-size: 6em;
     }
@@ -91,7 +117,7 @@ body{
       font-size: 6em;
       margin-left: 2vw;
       padding-top: 1.5vw;
-      animation: spin 2s infinite;
+      animation: spin 2s infinite linear;
     }
 }
 
