@@ -1,3 +1,5 @@
+import React from 'react';
+import PropTypes from 'prop-types';
 import './title.style.scss';
 
 function Title(props){
@@ -6,6 +8,10 @@ function Title(props){
             { props.text }
         </div>
     )
+}
+
+Title.propTypes = {
+    text: PropTypes.string
 }
 
 export default Title;

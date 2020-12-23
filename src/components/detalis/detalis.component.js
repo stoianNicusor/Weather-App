@@ -1,3 +1,5 @@
+import React from 'react';
+import PropTypes from 'prop-types';
 import './detalis.style.scss';
 
 function Detalis(props){
@@ -6,6 +8,10 @@ function Detalis(props){
            {props.detalis}
         </div>
     )
+}
+
+Detalis.propTypes = { 
+    detalis: PropTypes.string
 }
 
 export default Detalis;

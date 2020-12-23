@@ -1,25 +1,24 @@
+import React from 'react';
 import './App.scss';
 import '../title/title.component';
 import Title from '../title/title.component';
 import Detalis from '../detalis/detalis.component';
 import Temp from '../temp/temp.component';
-import BiMoon from 'react-icons/bi';
+import Search from '../search/search.component';
 import {RiWindyLine,RiSunFill,RiSunFoggyFill,RiCloudy2Fill, RiFoggyFill} from 'react-icons/ri';
 import { useEffect, useState } from 'react';
 import {VscLoading} from 'react-icons/vsc';
 import Button from '../button/button.component';
-
-
-
-
+import {FaRegSnowflake} from 'react-icons/fa';
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
 
 function App() {
 
   const [weather, setWeather] = useState();
   const [loaded, setLoaded] = useState(false);
-  const currentTime = new Date().toLocaleTimeString('en',{timeStyle: 'short'});
+  let currentTime = new Date().toLocaleTimeString('en',{timeStyle: 'short'});
   const [city, setCity] = useState('Bucharest');
-  
 
   var d = new Date();
   var weekday = new Array(7);
@@ -31,24 +30,70 @@ function App() {
   weekday[5] = "Vineri";
   weekday[6] = "Sambata";
   var n = weekday[d.getDay()];
-
-  useEffect(() =>{
+    
+  //For switch weather icon
+  function icon() {
+    let det = weather.weather[0].description;
+    switch (det) {
+      case 'cer senin':
+        return <RiSunFill/>;
+        break;
+      case 'nori împrăștiați':
+        return <RiSunFoggyFill/>;
+        break;
+      case 'cer acoperit de nori':
+        return <RiCloudy2Fill/>;
+        break;
+      case 'ceață':
+        return <RiFoggyFill/>;
+        break;
+      case 'ninsoare ușoară':
+        return <FaRegSnowflake/>;
+        break;
+      default:
+        return <RiSunFill/>;
+    }
+  }
+  /**
+   * Return the API data in useEffect
+   * 
+   * @function {function} is a function to get API data Json
+   * @dep {array} is state that gets update
+   */
+  useEffect(() => {
     async function getData(){
-      const resp = await fetch('http://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=2a07c6b1ab39b87ff1638fe206646d06&units=metric&lang=ro');
+      const resp = await fetch('http://api.openweathermap.org/data/2.5/weather?q=' + 
+                                city + 
+                                '&appid=cfd855cd52eb23f661cb93ee10ddc8d8&units=metric&lang=ro');
       const jsonResp = await resp.json();
       setWeather(jsonResp);
       setLoaded(true);
-      console.log(city);
-    
     }
     getData();
   },[city]);
 
-   let switchCity = (e) =>{
-     setCity(e.currentTarget.textContent);
-    }
-  
-    
+  /** 
+   * Function to update the state of city
+   * 
+   * @e {event} synthetic event for button click
+   */ 
+  let switchCity = (e) => {
+    setCity(e.currentTarget.textContent);
+  } 
+
+/** 
+   * Function to update the state of city
+   * 
+   * @ take the input from user
+   */ 
+
+  let searchCity = () => {
+    var rsp = document.querySelector('#searchTxt').value;
+    rsp ?
+      setCity(rsp)
+      : alert('error')
+    } 
+
   return (
     loaded ? 
     <div className='App'>
@@ -63,27 +108,7 @@ function App() {
         </div>
         <div className='howIs'> 
           <div className='logo'>
-           
-          { function() {
-           let det = weather.weather[0].description;
-            switch (det) {
-              case 'cer senin':
-                return <RiSunFill/>;
-                break;
-              case 'nori împrăștiați':
-                return <RiSunFoggyFill/>;
-                break;
-              case 'cer acoperit de nori':
-                return <RiCloudy2Fill/>;
-                break;
-              case 'ceață':
-                return <RiFoggyFill/>;
-                break;
-              default:
-                return <RiSunFill/>;
-            }
-          }()}
-
+            {icon()}
           </div>
             <Detalis detalis={weather.weather[0].description}/>
         </div>
@@ -116,6 +141,7 @@ function App() {
           <Button city='Sidney' clickChange={switchCity}/>
         </div>
       </div>
+     <Search placeholder='Write in English' clickChange={searchCity}/>
    </div>
   : <div className='load'>
         <div className='l'>
