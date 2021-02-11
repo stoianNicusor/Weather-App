@@ -68,6 +68,7 @@ function App() {
       const jsonResp = await resp.json();
       setWeather(jsonResp);
       setLoaded(true);
+      
     }
     getData();
   },[city]);
